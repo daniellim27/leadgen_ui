@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Scraper } from "@/components/scraper"
 import { DataEnhancement } from "@/components/data-enhancement"
+import { Leads } from "@/components/leads"
 import { Header } from "@/components/header"
 import { Sidebar } from "@/components/sidebar"
 
@@ -17,15 +18,19 @@ export function Dashboard() {
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         <main className="flex-1 p-6">
           <Tabs defaultValue="scraper" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
+            <TabsList className="grid w-full max-w-md grid-cols-3 mb-8">
               <TabsTrigger value="scraper">Scraper</TabsTrigger>
               <TabsTrigger value="enhancement">Data Enhancement</TabsTrigger>
+              <TabsTrigger value="leads">Leads</TabsTrigger>
             </TabsList>
             <TabsContent value="scraper">
               <Scraper />
             </TabsContent>
             <TabsContent value="enhancement">
               <DataEnhancement />
+            </TabsContent>
+            <TabsContent value="leads">
+              <Leads />
             </TabsContent>
           </Tabs>
         </main>

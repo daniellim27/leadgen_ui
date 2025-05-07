@@ -3,6 +3,7 @@
 import { Database, LineChart, Search, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
 interface SidebarProps {
   activeTab: string
@@ -10,6 +11,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
+  const router = useRouter()
+  
   return (
     <div className="hidden lg:block w-64 border-r bg-white">
       <div className="flex flex-col gap-2 p-4">
@@ -29,7 +32,11 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           <Database className="h-5 w-5" />
           Data Enhancement
         </Button>
-        <Button variant="ghost" className="justify-start gap-2">
+        <Button 
+          variant="ghost" 
+          className={cn("justify-start gap-2", activeTab === "leads" && "bg-mint-100 text-teal-700")}
+          onClick={() => setActiveTab("leads")}
+        >
           <Users className="h-5 w-5" />
           Leads
         </Button>
